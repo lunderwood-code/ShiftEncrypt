@@ -62,7 +62,7 @@ int EncryptBufferconst(const char *key, char (*line)[BUFSIZ])
 //valid chars -> 32 to 126
 static char decrypt(char keyByte, unsigned char messageByte)
 {
-    if (messageByte != '\0')
+    if ((messageByte >= MIN_ENC_CHARACTER) && (messageByte <= MAX_ENC_CHARACTER))
     {
         // adjust to range
         messageByte -= MIN_ENC_CHARACTER;
@@ -81,7 +81,7 @@ static char decrypt(char keyByte, unsigned char messageByte)
 
 static char encrypt(char keyByte, unsigned char messageByte)
 {
-    if (messageByte != '\0')
+    if ((messageByte >= MIN_ENC_CHARACTER) && (messageByte <= MAX_ENC_CHARACTER))
     {
         // adjust to range
         messageByte -= MIN_ENC_CHARACTER;
